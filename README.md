@@ -1,55 +1,81 @@
 # AI Symptom Checker
 
-An AI-powered symptom checker that helps users understand potential medical conditions based on their symptoms. This tool uses OpenAI's GPT model to analyze symptoms and provide informative responses.
+# 🧠 AI Symptom Checker — DR. AI 🤖
 
-## Important Disclaimer
+**DR. AI** # AI Symptom Checker 🏥
 
-This application is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult with a qualified healthcare provider for medical concerns.
+An intelligent web-based medical symptom checker powered by Google's Gemini AI that provides preliminary health assessments and medical guidance.
 
-## Features
+## Features 🌟
 
-- Input age and gender information
-- Describe symptoms in natural language
-- Get AI-powered analysis of potential conditions
-- Receive severity assessments and general recommendations
-- Medical disclaimers and professional consultation reminders
-- Modern, responsive web interface
+- **Smart Symptom Analysis**: Powered by Google's Gemini AI model
+- **User Authentication**: Secure login and registration system
+- **Personal Health Dashboard**: Track your consultation history
+- **Follow-up System**: Track your health progress
+- **Age-Specific Analysis**: Tailored recommendations based on age and gender
 
-## Tech Stack
+## Tech Stack 💻
 
-- Backend: Flask (Python)
-- Frontend: HTML5, CSS3, JavaScript
-- AI: OpenAI GPT-3.5 Turbo
-- Styling: Bootstrap 5
+- **Backend**: Flask (Python)
+- **Database**: SQLite
+- **AI Model**: Google Gemini AI
+- **Authentication**: Flask-Login
+- **Frontend**: HTML5, CSS3, JavaScript
+- **Security**: Werkzeug Security for password hashing
 
-## Setup
+## Prerequisites 📋
 
-1. Clone this repository
-2. Install the required dependencies:
+- Python 3.8 or higher
+- pip (Python package manager)
+- Google Gemini API key
+
+## Installation 🚀
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/ai-symptom-checker.git
+   cd ai-symptom-checker
+   ```
+
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
-3. Create a `.env` file in the root directory with your configuration:
+
+4. Create a `.env` file in the project root:
+   ```env
+   FLASK_SECRET_KEY=your_secret_key
+   GEMINI_API_KEY=your_gemini_api_key
    ```
-   OPENAI_API_KEY=your_api_key_here
-   FLASK_SECRET_KEY=your_secret_key_here  # Optional: for session security
+
+5. Initialize the database:
+   ```bash
+   flask db init
+   flask db migrate
+   flask db upgrade
    ```
 
-## Running the Application
+## Running the Application 🏃‍♂️
 
-To run the application, use the following command:
-```bash
-python app.py
-```
+1. Start the development server:
+   ```bash
+   python app.py
+   ```
 
-The application will start on `http://localhost:5000` by default.
+2. Access the application at `http://localhost:5000`
 
-## Project Structure
+## Project Structure 📁
 
 ```
 .
 ├── app.py              # Main Flask application
-├── requirements.txt    # Python dependencies
+├── database.py         # Database models and configuration
 ├── static/            # Static files
 │   ├── css/          # CSS styles
 │   │   └── style.css
@@ -59,29 +85,45 @@ The application will start on `http://localhost:5000` by default.
     └── index.html
 ```
 
-## Security and Privacy
+## Security Measures 🔒
 
-- This application does not store any personal health information
-- All communications with the OpenAI API are encrypted
-- User data is not persisted between sessions
-- HTTPS recommended for production deployment
+- Secure password hashing using Werkzeug
+- Protected routes with Flask-Login
+- Session management
+- Environment variable configuration
+- No storage of sensitive medical data
 
-## Development
+## Features in Detail 📝
 
-To run the application in development mode:
-```bash
-export FLASK_ENV=development
-python app.py
-```
+### Symptom Analysis
+- Input your age, gender, and symptoms
+- Receive AI-powered preliminary assessment
+- Get age-appropriate medical recommendations
+- Follow-up questions for better accuracy
 
-## Production Deployment
+### User Dashboard
+- View consultation history
+- Access Smart Symptom Analysis
 
-For production deployment:
-1. Use a production-grade WSGI server (e.g., Gunicorn)
-2. Enable HTTPS
-3. Set up proper security headers
-4. Use environment variables for sensitive data
+## Contributing 🤝
 
-## Support
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-For issues and feature requests, please open an issue in the repository. 
+
+
+## Acknowledgments 👏
+
+- Google Gemini AI for powering the symptom analysis
+- Flask framework and its community
+- All contributors and users of this project
+
+## Disclaimer ⚠️
+
+This application is for informational purposes only and should not be considered as professional medical advice. Always consult with a qualified healthcare provider for medical diagnosis and treatment.
+
+---
+Made with ❤️ by [Akshita Dhaka and Adity Senger] 
