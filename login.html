@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DR. AI - Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f0f2f5;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        .auth-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .auth-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        .auth-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .auth-header i {
+            font-size: 48px;
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+        .auth-header h1 {
+            color: #2c3e50;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+        .form-control:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+        }
+        .btn-auth {
+            background-color: #4CAF50;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            width: 100%;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        .btn-auth:hover {
+            background-color: #388E3C;
+        }
+        .auth-switch {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+        .auth-switch a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .auth-switch a:hover {
+            text-decoration: underline;
+        }
+        .alert {
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <i class="fas fa-heartbeat"></i>
+                    <h1>DR. AI</h1>
+                    <p class="text-muted">Welcome back! Please login to continue.</p>
+                </div>
+
+                <div id="alertBox" style="display: none;" class="alert" role="alert"></div>
+
+                <!-- Login Form -->
+                <form id="loginForm" style="display: block;">
+                    <div class="mb-3">
+                        <input type="email" class="form-control" id="loginEmail" placeholder="Email" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" id="loginPassword" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-auth">
+                        <i class="fas fa-sign-in-alt me-2"></i>Login
+                    </button>
+                    <div class="auth-switch">
+                        Don't have an account? <a href="#" id="showRegister">Register</a>
+                    </div>
+                </form>
+
+                <!-- Register Form -->
+                <form id="registerForm" style="display: none;">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="registerName" placeholder="Full Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" id="registerEmail" placeholder="Email" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" id="registerPassword" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-auth">
+                        <i class="fas fa-user-plus me-2"></i>Register
+                    </button>
+                    <div class="auth-switch">
+                        Already have an account? <a href="#" id="showLogin">Login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const showRegister = document.getElementById('showRegister');
+            const showLogin = document.getElementById('showLogin');
+            const alertBox = document.getElementById('alertBox');
+
+            function showAlert(message, type) {
+                alertBox.className = `alert alert-${type}`;
+                alertBox.textContent = message;
+                alertBox.style.display = 'block';
+                setTimeout(() => {
+                    alertBox.style.display = 'none';
+                }, 5000);
+            }
+
+            showRegister.addEventListener('click', (e) => {
+                e.preventDefault();
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'block';
+            });
+
+            showLogin.addEventListener('click', (e) => {
+                e.preventDefault();
+                registerForm.style.display = 'none';
+                loginForm.style.display = 'block';
+            });
+
+            // In the loginForm event listener in login.html
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                try {
+                    const response = await fetch('/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            email: document.getElementById('loginEmail').value,
+                            password: document.getElementById('loginPassword').value
+                        })
+                    });
+
+                    const data = await response.json();
+                    if (response.ok && data.success) {
+                        window.location.href = '/dashboard';  // Redirect to dashboard after login
+                    } else {
+                        showAlert(data.error || 'Login failed', 'danger');
+                    }
+                } catch (error) {
+                    showAlert('An error occurred. Please try again.', 'danger');
+                }
+            });
+
+            registerForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                try {
+                    const response = await fetch('/register', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            name: document.getElementById('registerName').value,
+                            email: document.getElementById('registerEmail').value,
+                            password: document.getElementById('registerPassword').value
+                        })
+                    });
+
+                    const data = await response.json();
+                    if (response.ok) {
+                        showAlert('Registration successful! Please login.', 'success');
+                        registerForm.reset();
+                        showLogin.click();
+                    } else {
+                        showAlert(data.error, 'danger');
+                    }
+                } catch (error) {
+                    showAlert('An error occurred. Please try again.', 'danger');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

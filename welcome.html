@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to DR. AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f0f2f5;
+            min-height: 100vh;
+        }
+        .welcome-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .text-primary {
+            color: #4CAF50 !important;
+        }
+        .btn-primary {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+        }
+        .btn-primary:hover {
+            background-color: #388E3C;
+            border-color: #388E3C;
+        }
+        .feature-icon {
+            font-size: 48px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        .navbar-brand i {
+            color: #4CAF50;
+            margin-right: 10px;
+        }
+        .alert-medical {
+            background-color: #e8f5e9;
+            border-color: #4CAF50;
+            color: #1b5e20;
+        }
+        .get-started-btn {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="/"><i class="fas fa-heartbeat"></i>DR. AI</a>
+            <div class="ms-auto">
+                <a href="/login_page" class="btn btn-outline-primary me-2">Login</a>
+                <a href="/register_page" class="btn btn-primary">Register</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="welcome-container">
+        <!-- Hero Section -->
+        <div class="text-center mb-5">
+            <h1 class="display-4 mb-3">
+                <i class="fas fa-robot text-primary me-2"></i>
+                Welcome to DR. AI
+            </h1>
+            <p class="lead mb-4">Your Intelligent Health Companion</p>
+            <a href="/login_page" class="btn btn-primary btn-lg">
+                Get Started <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+
+        <!-- Features -->
+        <div class="row mb-5">
+            <div class="col-md-4">
+                <div class="feature-card text-center">
+                    <i class="fas fa-brain feature-icon"></i>
+                    <h3>Advanced AI Analysis</h3>
+                    <p>Powered by Google's Gemini AI for accurate symptom analysis and personalized health recommendations.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card text-center">
+                    <i class="fas fa-shield-alt feature-icon"></i>
+                    <h3>Safe & Private</h3>
+                    <p>Your health information is encrypted and kept completely confidential. We prioritize your privacy.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card text-center">
+                    <i class="fas fa-clock feature-icon"></i>
+                    <h3>24/7 Available</h3>
+                    <p>Get instant health insights and recommendations anytime, anywhere. We're always here for you.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- How It Works -->
+        <div class="feature-card mb-5">
+            <h2 class="text-center mb-4">How DR. AI Works</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="text-center">
+                        <i class="fas fa-user-plus feature-icon"></i>
+                        <h4>Step 1</h4>
+                        <p>Create your secure account</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-center">
+                        <i class="fas fa-clipboard-list feature-icon"></i>
+                        <h4>Step 2</h4>
+                        <p>Enter your health information</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-center">
+                        <i class="fas fa-comment-medical feature-icon"></i>
+                        <h4>Step 3</h4>
+                        <p>Describe your symptoms</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-center">
+                        <i class="fas fa-file-medical-alt feature-icon"></i>
+                        <h4>Step 4</h4>
+                        <p>Get AI-powered analysis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Medical Disclaimer -->
+        <div class="alert alert-medical">
+            <h4><i class="fas fa-info-circle me-2"></i>Important Medical Disclaimer</h4>
+            <p class="mb-0">DR. AI is designed to provide preliminary health insights and should not replace professional medical advice. Always consult with a healthcare provider for proper diagnosis and treatment. In case of emergency, please contact your local emergency services immediately.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
